@@ -4,7 +4,7 @@ const getAllMovies = async(req, res) =>
 {
     try{ 
         let movies
-        if(req.body.filter == null)
+        if(req.body.filter == null || req.body.filter === "All")
         {
             movies = await movieModel.find().sort({imdbRating : -1});
             return res.status(200).json(movies);
@@ -12,7 +12,7 @@ const getAllMovies = async(req, res) =>
         else
         {
             movies = await movieModel.find({movieGenre : req.body.filter}).sort({imdbRating : -1});
-            return res.status(200).json({movies});
+            return res.status(200).json(movies);
         }
     }
     catch(err)

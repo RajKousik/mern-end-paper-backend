@@ -7,5 +7,6 @@ const {getAllMovies} = require('../controllers/movieController.js')
 
 
 router.route('/').get(getAllMovies)
+router.route('/').post(getAllMovies)
 
 module.exports = router;
